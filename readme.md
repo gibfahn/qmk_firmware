@@ -1,4 +1,44 @@
-# Quantum Mechanical Keyboard Firmware
+# GibDox Keyboard layout
+
+### How to flash
+
+- Install the prerequisites from [here](https://docs.qmk.fm/getting_started_build_tools.html).
+- Run for each hand (with the right hand plugged in directly, and the keyboard
+  in flash mode):
+
+```bash
+make ergodox_infinity:gib:dfu-util # Left hand
+make ergodox_infinity:gib:dfu-util MASTER=right # Right hand
+```
+
+Keep a paperclip handy in case you brick your device (can't get it into reset
+mode to flash new firmware), in which case you want to hit the reset buttons on
+the bottom of each half.
+
+#### More than one DFU device found
+
+If you hit this error:
+
+```
+dfu-util: Invalid DFU suffix signature
+dfu-util: A valid DFU suffix will be required in a future dfu-util release!!!
+dfu-util: More than one DFU capable USB device found! Try `--list' and specify the serial number or disconnect all but one device
+```
+
+Try `dfu-util -l`, and see what the other device is. In my case I had one called
+`runtime`. The workaround is to run `make` with the keyboard plugged in but not
+in flash mode. When you see execution halt on these lines:
+
+```
+dfu-util: error detaching
+Resetting USB...
+```
+
+then put the keyboard into flash mode. This works reliably for me.
+
+## Original README:
+
+### Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
 [![Build Status](https://travis-ci.org/qmk/qmk_firmware.svg?branch=master)](https://travis-ci.org/qmk/qmk_firmware)
