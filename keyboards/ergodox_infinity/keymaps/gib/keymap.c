@@ -15,16 +15,14 @@ enum custom_keycodes {
 };
 
 /*
- * 0-9                                   : KC_0 - KC_9
- * a-z                                   : KC_A - KC_Z
- * Up/Down/Left/Right                    : KC_UP, KC_DOWN, KC_LEFT, KC_RIGHT
- * PgUp,PgDown}                          : KC_PGUP, KC_PGDN
- * Home,End                              : KC_HOME, KC_END
- * - = , . / \ ; '                       : KC_MINS, KC_EQL, KC_COMM, KC_DOT, KC_SLSH, KC_BSLS, KC_SCLN, KC_QUOT
- * LGui, LCtrl, LShift LAlt (+RGui etc.) : KC_LGUI, KC_LCTL, KC_LSFT, KC_LALT (+KC_RGUI etc.)
- * Space, Backspace, Delete, Enter, Tab  : KC_SPC, KC_BSPC, KC_DELT, KC_ENT, KC_TAB
- * Escape                                : KC_ESC
- * [ ]
+ * Keycodes: https://docs.qmk.fm/keycodes.html
+ * Layer Switching: https://docs.qmk.fm/feature_advanced_keycodes.html#switching-and-toggling-layers
+ *
+ * 0-9 a-z                         : KC_0 - KC_9, KC_A - KC_Z
+ * ↖ ↘   ⇟ ⇞  ▲ ▼ ◀  ▶             : KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_UP, KC_DOWN, KC_LEFT, KC_RGHT
+ * - = , . / \ ; ' [ ]             : KC_MINS, KC_EQL, KC_COMM, KC_DOT, KC_SLSH, KC_BSLS, KC_SCLN, KC_QUOT, KC_LBRC, KC_RBRC
+ * L⌘ , L⌃ , L⇧ , L⌥ , (+R⌘  etc.) : KC_LGUI, KC_LCTL, KC_LSFT, KC_LALT (+KC_RGUI etc.)
+ * Space ⌫  ⌦  ↵  ⇥  ⎋             : KC_SPC, KC_BSPC, KC_DELT, KC_ENT, KC_TAB, KC_ESC
  *
  * MO(layer) - momentary switch to layer. As soon as you let go of the key, the layer is deactivated and you pop back out to the previous layer.
  * LT(layer, kc) - momentary switch to layer when held, and kc when tapped.
@@ -59,26 +57,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
     // left hand
-    RESET          , KC_1        , KC_2    , KC_3    , KC_4    , KC_5 , TG(LYR2)   ,
-    KC_TAB         , KC_Q        , KC_W    , KC_E    , KC_R    , KC_T , RSFT(KC_9) ,
-    KC_RSFT        , KC_A        , KC_S    , KC_D    , KC_F    , KC_G ,
-    LCTL_T(KC_ESC) , CTL_T(KC_Z) , KC_X    , KC_C    , KC_V    , KC_B , KC_LBRC    ,
-    _______         , _______        , KC_LALT , KC_LCTL , KC_LGUI
+    RESET          , KC_1        , KC_2    , KC_3       , KC_4       , KC_5          , TG(LYR2)   ,
+    KC_TAB         , KC_Q        , KC_W    , KC_E       , KC_R       , KC_T          , RSFT(KC_9) ,
+    KC_RSFT        , KC_A        , KC_S    , KC_D       , KC_F       , KC_G          ,
+    LCTL_T(KC_ESC) , CTL_T(KC_Z) , KC_X    , KC_C       , KC_V       , KC_B          , KC_LBRC    ,
+    _______        , _______     , KC_LALT , KC_LCTL    , KC_LGUI
 
-    /* _______ , _______ , _______ , _______    , _______ */ , ALT_T(KC_APP) , _______
-    /* _______ , _______ , _______ , _______    , _______    , _______      */  , KC_LALT
-    /* _______ , _______ , _______ , _______ */ , KC_RSFT , MO(LYR1)      , KC_LGUI ,
+    /* _______     , _______     , _______ , _______    , _______ */ , ALT_T(KC_APP) , _______
+    /* _______     , _______     , _______ , _______    , _______    , _______ */    , KC_LALT
+    /* _______     , _______     , _______ , _______ */ , KC_RSFT    , MO(LYR1)      , KC_LGUI    ,
 
     // right hand
-    TG(LYR2)     , KC_6    , KC_7   , KC_8    , KC_9    , KC_0    , RESET   ,
-    RSFT(KC_9)   , KC_Y    , KC_U   , KC_I    , KC_O    , KC_P    , KC_MINS
-                 , KC_H    , KC_J   , KC_K    , KC_L    , KC_SCLN , KC_QUOT ,
-    KC_RBRC      , KC_N    , KC_M   , KC_COMM , KC_DOT  , KC_SLSH , KC_BSLS
-                 , KC_RSFT    , KC_RALT   , _______    , _______ , KC_FN1  ,
+    TG(LYR2)      , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , RESET   ,
+    RSFT(KC_0)    , KC_Y    , KC_U    , KC_I    , KC_O    , KC_P    , KC_MINS
+                  , KC_H    , KC_J    , KC_K    , KC_L    , KC_SCLN , KC_QUOT ,
+    KC_RBRC       , KC_N    , KC_M    , KC_COMM , KC_DOT  , KC_SLSH , KC_BSLS
+                  , KC_RSFT , KC_RALT , _______ , _______ , KC_FN1  ,
 
-    _______      , _______ ,
-    KC_LALT      ,
-    KC_LCTL      , KC_BSPC , KC_SPC
+    _______       , _______ ,
+    KC_LALT       ,
+    KC_LCTL       , KC_BSPC , KC_SPC
     ),
 /* Keymap 1: Hyper Layer
  *
