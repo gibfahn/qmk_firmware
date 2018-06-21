@@ -18,6 +18,11 @@ enum custom_keycodes {
  * Keycodes: https://docs.qmk.fm/keycodes.html
  * Layer Switching: https://docs.qmk.fm/feature_advanced_keycodes.html#switching-and-toggling-layers
  *
+ * Build commands:
+
+make ergodox_infinity:gib:dfu-util # Left hand
+make ergodox_infinity:gib:dfu-util MASTER=right # Right hand
+
  * 0-9 a-z                         : KC_0 - KC_9, KC_A - KC_Z
  * ↖ ↘   ⇟ ⇞  ▲ ▼ ◀  ▶             : KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_UP, KC_DOWN, KC_LEFT, KC_RGHT
  * - = , . / \ ; ' [ ]             : KC_MINS, KC_EQL, KC_COMM, KC_DOT, KC_SLSH, KC_BSLS, KC_SCLN, KC_QUOT, KC_LBRC, KC_RBRC
@@ -83,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Anything blank (KC_TRNS) does whatever layer below did.
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |Version  |  F1  g  F2  |  F3  |  F4  |  F5  | F11  |           | F12  |  F6  |  F7  |  F8  |  F9  |  F10 | Vol+   |
+ * | Version |  F1  |  F2  |  F3  |  F4  |  F5  | F11  |           | F12  |  F6  |  F7  |  F8  |  F9  |  F10 | Vol+   |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
  * |         |      |   7  |   8  |   9  |      | 🐭 3 |           | 🐭 4 |  ↖   |  ⇟   |  ⇞   |  ↘   |      |        |
  * |---------+------+------+------+------+------| Back |           | Fwrd |------+------+------+------+------+--------|
@@ -91,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |---------+------+------+------+------+------| 🐭 L |           | 🐭 R |------+------+------+------+------+--------|
  * |         |   0  |   1  |   2  |   3  | 🐭 ⇟ | Click|           | Click| 🐭 ◀ | 🐭▼  | 🐭▲  | 🐭 ▶ |  .   |        |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | EPRM  |      |      |      |      |                                       |      |      |      |      |      |
+ *   | EPRM  |      |      |      |      |                                       |  ⏮   |  ⏯   | ⏭    |      |      |
  *   `-----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |Toggle|Solid |
@@ -120,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BTN4, KC_HOME , KC_PGDN , KC_PGUP , KC_END  , KC_ASTR , KC_TRNS
          , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_EQL  , KC_GRV  ,
   KC_BTN2, KC_MS_L , KC_MS_D , KC_MS_U , KC_MS_R , KC_DOT  , KC_TRNS
-         , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+         , KC_MPRV , KC_MPLY , KC_MFFD , KC_TRNS , KC_TRNS ,
 
   RGB_TOG, RGB_SLD ,
   KC_TRNS,
